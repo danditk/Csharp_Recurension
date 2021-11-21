@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -12,6 +13,16 @@ namespace Csharp_Recurension
     {
         static void Main(string[] args)
         {
+            string path = @"PlikProgramuEsharp_Recurension.txt"; // relatywnie                  //"d:\\TeporatyFiles\\PlikProgramuEsharp_Recurension.txt" = @"d:\TeporatyFiles\PlikProgramuEsharp_Recurension.txt"
+            if (File.Exists(path))
+            {
+                
+            }
+            else
+            {
+                
+            }
+
             const int NUMBER = 8;
             Stopwatch time = new Stopwatch();
             time.Start();
@@ -27,7 +38,7 @@ namespace Csharp_Recurension
             time.Stop();
             Console.WriteLine(time.ElapsedTicks);
 
-            Console.ReadKey();
+            //Console.ReadKey();
 
         }
 
