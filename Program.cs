@@ -14,31 +14,64 @@ namespace Csharp_Recurension
         static void Main(string[] args)
         {
             string path = @"PlikProgramuEsharp_Recurension.txt"; // relatywnie                  //"d:\\TeporatyFiles\\PlikProgramuEsharp_Recurension.txt" = @"d:\TeporatyFiles\PlikProgramuEsharp_Recurension.txt"
-            if (File.Exists(path))
+            StreamWriter sw;
+            if (!File.Exists(path))
             {
-                
+                sw = File.CreateText(path);
+                Console.WriteLine("Plik został utworzony!");
             }
             else
             {
-                
+                sw = new StreamWriter(path, true);
+                Console.WriteLine("Plik został otwarty");
             }
+
+            Console.ReadKey();
+            Console.WriteLine("Kliknij aby rozpocząć pomiar");
 
             const int NUMBER = 8;
             Stopwatch time = new Stopwatch();
             time.Start();
-            Console.WriteLine(Strong(NUMBER));
+            string strong = Strong(NUMBER).ToString();
+            //Console.WriteLine(Strong(NUMBER));
             time.Stop();
-            Console.WriteLine(time.ElapsedTicks);
+            string strongTime = time.ElapsedTicks.ToString();
+            //Console.WriteLine(time.ElapsedTicks);
 
             time.Reset();
-            Console.WriteLine();
+            //Console.WriteLine();
 
             time.Start();
-            Console.WriteLine(StrongRec(NUMBER));
+            string strongRec = StrongRec(NUMBER).ToString();
+            //Console.WriteLine(StrongRec(NUMBER));
             time.Stop();
-            Console.WriteLine(time.ElapsedTicks);
+            string strongRecTime = time.ElapsedTicks.ToString();
+            //Console.WriteLine(time.ElapsedTicks);
 
-            //Console.ReadKey();
+            time.Reset();
+
+            string textToFile = "Wyniki porównania \n";
+            textToFile += strong + " - ";
+            textToFile += strongTime + "j.p. \n";
+            textToFile += strongRec + " - ";
+            textToFile += strongRecTime + "j.p. \n";
+
+            sw.WriteLine(textToFile);
+            sw.Close();
+            Console.WriteLine("Dane zostały zapisane w pliku i zamknięty");
+
+            StreamReader sr = File.OpenText(path);
+            string insideFile = "";
+            int i = 1;
+
+            Console.WriteLine("\nZawartość pliku:");
+            while ((insideFile = sr.ReadLine()) != null)
+            {
+                Console.WriteLine(i++ + ". " + insideFile);
+            }
+            sr.Close();
+
+            Console.ReadKey();
 
         }
 
