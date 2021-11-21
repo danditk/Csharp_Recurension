@@ -27,7 +27,7 @@ namespace Csharp_Recurension
             }
 
             Console.ReadKey();
-            Console.WriteLine("Kliknij, aby rozpocząć pomiar");
+            Console.WriteLine("\nKliknij, aby rozpocząć pomiar");
 
             const int NUMBER = 8;
             Stopwatch time = new Stopwatch();
@@ -74,6 +74,15 @@ namespace Csharp_Recurension
             }
             sr.Close();
 
+            Console.WriteLine("Czy usunąć plik? [T/t]");
+            string userDec = Console.ReadLine();
+            if (userDec == "T" || userDec == "t")
+            {
+                File.Delete(path);
+                Console.WriteLine("Plik został usunięty!");
+            }
+
+            Console.WriteLine("Proces zakończony");
             Console.ReadKey();
 
         }
