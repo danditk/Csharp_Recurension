@@ -21,11 +21,21 @@ namespace Csharp_Recurension
 
             Console.WriteLine(time.ElapsedTicks);
 
+            Console.ReadKey();
+
         }
 
-        private static bool Strong(int number)
+        private static long Strong(int x)
         {
-            throw new NotImplementedException();
+            long result = 1;
+
+            while (x > 1)
+            {
+                result *= x;
+                x--;
+            }
+
+            return result;
         }
     }
 }
