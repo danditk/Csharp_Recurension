@@ -12,7 +12,7 @@ namespace Csharp_Recurension
     {
         static void Main(string[] args)
         {
-            const int NUMBER = 3;
+            const int NUMBER = 8;
             Stopwatch time = new Stopwatch();
             time.Start();
             Console.WriteLine(Strong(NUMBER));
