@@ -27,7 +27,7 @@ namespace Csharp_Recurension
             }
 
             Console.ReadKey();
-            Console.WriteLine("Kliknij aby rozpocząć pomiar");
+            Console.WriteLine("Kliknij, aby rozpocząć pomiar");
 
             const int NUMBER = 8;
             Stopwatch time = new Stopwatch();
@@ -50,11 +50,14 @@ namespace Csharp_Recurension
 
             time.Reset();
 
-            string textToFile = "Wyniki porównania \n";
+
+            Console.WriteLine("Wpisz dowolny tytuł pomiaru lub zostaw puste pole i zatwierdź");
+            string textToFile = Console.ReadLine() + "\n";
+            textToFile += strong + "\nWyniki porównania \n";
             textToFile += strong + " - ";
-            textToFile += strongTime + "j.p. \n";
+            textToFile += strongTime + " j.p. \n";
             textToFile += strongRec + " - ";
-            textToFile += strongRecTime + "j.p. \n";
+            textToFile += strongRecTime + " j.p. \n";
 
             sw.WriteLine(textToFile);
             sw.Close();
@@ -62,7 +65,7 @@ namespace Csharp_Recurension
 
             StreamReader sr = File.OpenText(path);
             string insideFile = "";
-            int i = 1;
+            int i = 0;
 
             Console.WriteLine("\nZawartość pliku:");
             while ((insideFile = sr.ReadLine()) != null)
