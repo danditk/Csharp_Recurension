@@ -16,13 +16,31 @@ namespace Csharp_Recurension
             Stopwatch time = new Stopwatch();
             time.Start();
             Console.WriteLine(Strong(NUMBER));
-
             time.Stop();
+            Console.WriteLine(time.ElapsedTicks);
 
+            time.Reset();
+            Console.WriteLine();
+
+            time.Start();
+            Console.WriteLine(StrongRec(NUMBER));
+            time.Stop();
             Console.WriteLine(time.ElapsedTicks);
 
             Console.ReadKey();
 
+        }
+
+        private static long StrongRec(int x)
+        {
+            if (x <= 1)
+            {
+                return 1;
+            }
+            else
+            {
+                return StrongRec(x - 1) * x;
+            }
         }
 
         private static long Strong(int x)
